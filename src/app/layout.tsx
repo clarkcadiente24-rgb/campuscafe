@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: `${project.name} — IS Project Portfolio`,
   description:
-    "Project portfolio for CampusCafe, an online pre-ordering and pickup system for university cafeterias, including the schedule, WBS, Gantt chart, developer profile, and working prototype.",
+    "Project portfolio for CampusCafe, an online pre-ordering and pickup system for university cafeterias, including the schedule, WBS, Gantt chart, analytics dashboard, developer profile, customer prototype, and staff order board.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

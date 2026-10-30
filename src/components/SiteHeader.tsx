@@ -8,8 +8,10 @@ import { project } from "@/data/project";
 const links = [
   { href: "/", label: "Overview" },
   { href: "/schedule", label: "Schedule" },
+  { href: "/dashboard", label: "Dashboard" },
   { href: "/team", label: "Team" },
   { href: "/prototype", label: "Prototype" },
+  { href: "/staff", label: "Staff" },
 ];
 
 export default function SiteHeader() {

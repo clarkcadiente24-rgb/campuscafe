@@ -90,6 +90,8 @@ hours while remaining simple for cafeteria staff to operate.
 ## Prototype Status
 
 The current build is a working prototype using mock menu data and browser
-storage. Menu browsing, search and filtering, cart quantities, pickup selection,
-order placement, and status tracking are functional. A real database,
-authentication, and staff dashboard are planned for a later phase.
+storage. Menu browsing, search and filtering, item customization, cart
+quantities, multi-step checkout, pickup selection, order placement, and live
+status tracking are functional. A staff order board manages incoming orders and
+menu availability, and an analytics dashboard reports budget, effort, and risk.
+A real database and authentication are planned for a later phase.

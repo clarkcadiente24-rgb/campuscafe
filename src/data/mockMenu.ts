@@ -5,7 +5,16 @@ export type MenuCategory =
   | "Drinks"
   | "Desserts";
 
-export type OrderStatus = "Preparing" | "Ready" | "Picked up";
+export interface MenuSize {
+  label: string;
+  priceDelta: number;
+}
+
+export interface MenuAddOn {
+  id: string;
+  label: string;
+  price: number;
+}
 
 export interface MenuItem {
   id: string;
@@ -14,6 +23,12 @@ export interface MenuItem {
   price: number;
   category: MenuCategory;
   available: boolean;
+  prepMinutes: number;
+  rating: number;
+  reviews: number;
+  featured: boolean;
+  sizes?: MenuSize[];
+  addOns?: MenuAddOn[];
 }
 
 export const menuCategories: MenuCategory[] = [
@@ -33,6 +48,43 @@ export const pickupSlots = [
   "4:00 PM",
 ];
 
+const coffeeSizes: MenuSize[] = [
+  { label: "Regular", priceDelta: 0 },
+  { label: "Large", priceDelta: 30 },
+];
+
+const drinkSizes: MenuSize[] = [
+  { label: "Regular", priceDelta: 0 },
+  { label: "Large", priceDelta: 20 },
+];
+
+const mealSizes: MenuSize[] = [
+  { label: "Regular", priceDelta: 0 },
+  { label: "Large", priceDelta: 40 },
+];
+
+const coffeeAddOns: MenuAddOn[] = [
+  { id: "extra-shot", label: "Extra espresso shot", price: 25 },
+  { id: "oat-milk", label: "Oat milk", price: 20 },
+  { id: "vanilla", label: "Vanilla syrup", price: 15 },
+];
+
+const mealAddOns: MenuAddOn[] = [
+  { id: "extra-rice", label: "Extra garlic rice", price: 20 },
+  { id: "fried-egg", label: "Fried egg", price: 15 },
+  { id: "extra-sauce", label: "Extra sauce", price: 10 },
+];
+
+const snackAddOns: MenuAddOn[] = [
+  { id: "extra-cheese", label: "Extra cheese", price: 15 },
+  { id: "extra-dip", label: "Extra dip", price: 10 },
+];
+
+const drinkAddOns: MenuAddOn[] = [
+  { id: "less-sugar", label: "Less sugar", price: 0 },
+  { id: "extra-ice", label: "Extra ice", price: 0 },
+];
+
 export const menuItems: MenuItem[] = [
   {
     id: "C-01",
@@ -41,6 +93,12 @@ export const menuItems: MenuItem[] = [
     price: 120,
     category: "Coffee",
     available: true,
+    prepMinutes: 4,
+    rating: 4.8,
+    reviews: 126,
+    featured: true,
+    sizes: coffeeSizes,
+    addOns: coffeeAddOns,
   },
   {
     id: "C-02",
@@ -49,6 +107,12 @@ export const menuItems: MenuItem[] = [
     price: 95,
     category: "Coffee",
     available: true,
+    prepMinutes: 3,
+    rating: 4.5,
+    reviews: 84,
+    featured: false,
+    sizes: coffeeSizes,
+    addOns: coffeeAddOns,
   },
   {
     id: "C-03",
@@ -57,6 +121,12 @@ export const menuItems: MenuItem[] = [
     price: 110,
     category: "Coffee",
     available: true,
+    prepMinutes: 4,
+    rating: 4.6,
+    reviews: 71,
+    featured: false,
+    sizes: coffeeSizes,
+    addOns: coffeeAddOns,
   },
   {
     id: "C-04",
@@ -65,6 +135,12 @@ export const menuItems: MenuItem[] = [
     price: 135,
     category: "Coffee",
     available: true,
+    prepMinutes: 5,
+    rating: 4.9,
+    reviews: 158,
+    featured: true,
+    sizes: coffeeSizes,
+    addOns: coffeeAddOns,
   },
   {
     id: "M-01",
@@ -73,6 +149,12 @@ export const menuItems: MenuItem[] = [
     price: 150,
     category: "Meals",
     available: true,
+    prepMinutes: 12,
+    rating: 4.7,
+    reviews: 203,
+    featured: true,
+    sizes: mealSizes,
+    addOns: mealAddOns,
   },
   {
     id: "M-02",
@@ -81,6 +163,12 @@ export const menuItems: MenuItem[] = [
     price: 165,
     category: "Meals",
     available: true,
+    prepMinutes: 13,
+    rating: 4.6,
+    reviews: 142,
+    featured: false,
+    sizes: mealSizes,
+    addOns: mealAddOns,
   },
   {
     id: "M-03",
@@ -89,6 +177,12 @@ export const menuItems: MenuItem[] = [
     price: 140,
     category: "Meals",
     available: true,
+    prepMinutes: 11,
+    rating: 4.4,
+    reviews: 66,
+    featured: false,
+    sizes: mealSizes,
+    addOns: mealAddOns,
   },
   {
     id: "M-04",
@@ -97,6 +191,12 @@ export const menuItems: MenuItem[] = [
     price: 110,
     category: "Meals",
     available: false,
+    prepMinutes: 8,
+    rating: 4.3,
+    reviews: 49,
+    featured: false,
+    sizes: mealSizes,
+    addOns: mealAddOns,
   },
   {
     id: "S-01",
@@ -105,6 +205,11 @@ export const menuItems: MenuItem[] = [
     price: 90,
     category: "Snacks",
     available: true,
+    prepMinutes: 7,
+    rating: 4.5,
+    reviews: 93,
+    featured: false,
+    addOns: snackAddOns,
   },
   {
     id: "S-02",
@@ -113,6 +218,11 @@ export const menuItems: MenuItem[] = [
     price: 75,
     category: "Snacks",
     available: true,
+    prepMinutes: 6,
+    rating: 4.7,
+    reviews: 187,
+    featured: true,
+    addOns: snackAddOns,
   },
   {
     id: "S-03",
@@ -121,6 +231,11 @@ export const menuItems: MenuItem[] = [
     price: 85,
     category: "Snacks",
     available: true,
+    prepMinutes: 8,
+    rating: 4.6,
+    reviews: 112,
+    featured: false,
+    addOns: snackAddOns,
   },
   {
     id: "D-01",
@@ -129,6 +244,12 @@ export const menuItems: MenuItem[] = [
     price: 70,
     category: "Drinks",
     available: true,
+    prepMinutes: 3,
+    rating: 4.4,
+    reviews: 77,
+    featured: false,
+    sizes: drinkSizes,
+    addOns: drinkAddOns,
   },
   {
     id: "D-02",
@@ -137,6 +258,12 @@ export const menuItems: MenuItem[] = [
     price: 95,
     category: "Drinks",
     available: true,
+    prepMinutes: 4,
+    rating: 4.8,
+    reviews: 134,
+    featured: true,
+    sizes: drinkSizes,
+    addOns: drinkAddOns,
   },
   {
     id: "D-03",
@@ -145,6 +272,12 @@ export const menuItems: MenuItem[] = [
     price: 30,
     category: "Drinks",
     available: true,
+    prepMinutes: 1,
+    rating: 4.1,
+    reviews: 58,
+    featured: false,
+    sizes: drinkSizes,
+    addOns: drinkAddOns,
   },
   {
     id: "DS-01",
@@ -153,6 +286,10 @@ export const menuItems: MenuItem[] = [
     price: 45,
     category: "Desserts",
     available: true,
+    prepMinutes: 2,
+    rating: 4.5,
+    reviews: 96,
+    featured: false,
   },
   {
     id: "DS-02",
@@ -161,6 +298,10 @@ export const menuItems: MenuItem[] = [
     price: 120,
     category: "Desserts",
     available: false,
+    prepMinutes: 3,
+    rating: 4.7,
+    reviews: 81,
+    featured: false,
   },
   {
     id: "DS-03",
@@ -169,6 +310,10 @@ export const menuItems: MenuItem[] = [
     price: 80,
     category: "Desserts",
     available: true,
+    prepMinutes: 3,
+    rating: 4.6,
+    reviews: 64,
+    featured: false,
   },
 ];
 

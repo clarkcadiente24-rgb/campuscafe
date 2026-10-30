@@ -15,9 +15,11 @@ data, push it to GitHub, and deploy it on Vercel.
 
 The prototype demonstrates the core flows:
 
-- Browsing, searching, and filtering the menu
-- Adding items to a cart and choosing a pickup time
-- Placing a mock order and tracking status from preparing to picked up
+- Browsing, searching, filtering, and customizing menu items
+- Adding items to a cart, choosing a pickup time, and completing a mock checkout
+- Tracking orders from preparing to picked up with automatic status updates
+- Managing orders and menu availability from the staff order board
+- Reviewing budget, effort, and risk on the analytics dashboard
 
 Data is static/mock for this phase. A real database can be added later without
 changing the deployment setup.
@@ -124,7 +126,8 @@ in a later phase without changing the GitHub/Vercel pipeline.
 
 - Run `npm run lint` and `npm run build` locally.
 - Open the assigned `.vercel.app` URL.
-- Click through the menu, cart, pickup selection, and order tracking flows.
+- Click through the menu, item customization, checkout, order tracking, staff
+  board, and availability toggle flows.
 - Review Vercel **Build Logs** if anything fails.
 - Optional: add a custom domain under **Settings → Domains**.
 

@@ -13,11 +13,17 @@ export default function SiteFooter() {
           <Link href="/schedule" className="transition hover:text-slate-300">
             Schedule
           </Link>
+          <Link href="/dashboard" className="transition hover:text-slate-300">
+            Dashboard
+          </Link>
           <Link href="/team" className="transition hover:text-slate-300">
             Team
           </Link>
           <Link href="/prototype" className="transition hover:text-slate-300">
             Prototype
+          </Link>
+          <Link href="/staff" className="transition hover:text-slate-300">
+            Staff
           </Link>
         </div>
       </div>
