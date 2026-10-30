@@ -1,3 +1,4 @@
+import Image from "next/image";
 import SectionHeading from "@/components/SectionHeading";
 import { developer, roleHats, skills } from "@/data/team";
 
@@ -20,8 +21,14 @@ export default function TeamPage() {
 
       <section className="glass rounded-2xl p-6 sm:p-8">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-start">
-          <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-400 via-orange-500 to-rose-500 text-2xl font-semibold text-white shadow-lg shadow-orange-900/40 ring-1 ring-white/25">
-            CC
+          <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-2xl shadow-lg shadow-orange-900/40 ring-1 ring-white/25">
+            <Image
+              src="/clarkprofile.jpg"
+              alt={`${developer.name} profile photo`}
+              width={80}
+              height={80}
+              className="h-full w-full object-cover"
+            />
           </div>
           <div className="flex-1">
             <div className="flex flex-wrap items-center gap-3">
