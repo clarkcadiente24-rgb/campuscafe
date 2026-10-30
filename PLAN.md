@@ -1,24 +1,26 @@
-# UniAsset — Setup & Deployment Plan
+# CampusCafe — Setup & Deployment Plan
 
-**Project:** UniAsset — A Web-Based University Asset & Inventory Management System
+**Project:** CampusCafe — Online Pre-Ordering & Pickup System for University
+Cafeterias
 **Type:** Class / IS Project Management prototype (mock data, no real database)
 **Stack:** Next.js (TypeScript, Tailwind, App Router) → GitHub → Vercel
+**Delivery:** Solo developer
 
 ---
 
 ## Overview
 
-Build a working prototype of a university-wide asset and inventory management
-system using mock data, push it to GitHub, and deploy it on Vercel.
+Build a working prototype of a campus cafeteria pre-ordering system using mock
+data, push it to GitHub, and deploy it on Vercel.
 
 The prototype demonstrates the core flows:
 
-- Browsing and searching assets
-- Check-out / check-in of equipment
-- Admin asset overview and simple reporting
+- Browsing, searching, and filtering the menu
+- Adding items to a cart and choosing a pickup time
+- Placing a mock order and tracking status from preparing to picked up
 
-Data will be static/mock for this phase. A real database can be added later
-without changing the deployment setup.
+Data is static/mock for this phase. A real database can be added later without
+changing the deployment setup.
 
 ---
 
@@ -26,35 +28,17 @@ without changing the deployment setup.
 
 | Tool | Status |
 |------|--------|
-| Git  | ✅ Installed (2.56) |
-| Node | ✅ Installed (v26) |
-| npm  | ⚠️ Blocked by PowerShell execution policy |
-| Git repo | ❌ Not initialized |
-| Project files | `INFO.md` (empty), `PLAN.md` |
-
----
-
-## Phase 0 — Unblock npm
-
-PowerShell currently blocks npm scripts. Run once:
-
-```powershell
-Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
-```
-
-Alternative (no policy change): use `npm.cmd` / `npx.cmd` instead of `npm` / `npx`.
+| Git | Installed (2.56) |
+| Node | Installed (v26) |
+| npm | Working (11.20; execution policy fixed with RemoteSigned) |
+| Git repo | Initialized on `main` |
+| Project files | Next.js app scaffolded with `src/`, TypeScript, Tailwind v4 |
 
 ---
 
 ## Phase 1 — Scaffold the Next.js app
 
-From the project root:
-
-```powershell
-npx create-next-app@latest .
-```
-
-Recommended options:
+The app is already scaffolded in this repository. Options used:
 
 - TypeScript: **Yes**
 - ESLint: **Yes**
@@ -63,15 +47,13 @@ Recommended options:
 - App Router: **Yes**
 - Import alias: default (`@/*`)
 
-This generates a `.gitignore`, `README.md`, and the base app structure.
-
 ---
 
 ## Phase 2 — Configure Git identity (one-time)
 
 ```powershell
-git config --global user.name "Your Name"
-git config --global user.email "you@example.com"
+git config --global user.name "Clark Cadiente"
+git config --global user.email "clarkcadiente24@gmail.com"
 ```
 
 ---
@@ -81,17 +63,20 @@ git config --global user.email "you@example.com"
 ```powershell
 git init
 git add .
-git commit -m "Initial commit: UniAsset prototype"
+git commit -m "Build CampusCafe ordering system prototype"
 ```
 
-Then create an **empty** repository named `uniasset` on GitHub
+Then create an **empty** repository named `campuscafe` on GitHub
 (no README, no .gitignore), and connect it:
 
 ```powershell
 git branch -M main
-git remote add origin https://github.com/<username>/uniasset.git
+git remote add origin https://github.com/<username>/campuscafe.git
 git push -u origin main
 ```
+
+The GitHub CLI (`gh`) is not installed, so repository creation and the first
+push are done manually or with an existing remote.
 
 ---
 
@@ -99,10 +84,11 @@ git push -u origin main
 
 For this prototype phase, no database is required.
 
-- Store sample assets and users in `src/data/mockAssets.ts`.
-- Import mock data at build time (static data ships with the app).
-- For demo interactions (check-out / check-in), use **client-side state**
-  or **localStorage**.
+- Menu items live in `src/data/mockMenu.ts`.
+- Project, schedule, and team data live in `src/data/project.ts`,
+  `src/data/schedule.ts`, and `src/data/team.ts`.
+- Demo interactions (cart, orders, pickup time) use **React state** with
+  **localStorage** persistence.
 
 ### Important serverless note
 
@@ -113,8 +99,8 @@ For a prototype:
 - Keep data static, or
 - Persist user interactions in the browser (`localStorage`).
 
-A real database (Vercel Postgres/Neon, Supabase, or MongoDB Atlas) can be
-added in a later phase without changing the GitHub/Vercel pipeline.
+A real database (Vercel Postgres/Neon, Supabase, or MongoDB Atlas) can be added
+in a later phase without changing the GitHub/Vercel pipeline.
 
 ---
 
@@ -122,7 +108,7 @@ added in a later phase without changing the GitHub/Vercel pipeline.
 
 1. Go to [vercel.com](https://vercel.com) and sign in with GitHub.
 2. Select **Add New → Project**.
-3. Import the `uniasset` repository.
+3. Import the `campuscafe` repository.
 4. Framework is auto-detected as **Next.js** — keep default build settings.
 5. Click **Deploy**.
 6. No environment variables are needed for the mock-data prototype.
@@ -136,8 +122,9 @@ added in a later phase without changing the GitHub/Vercel pipeline.
 
 ## Phase 6 — Verify
 
+- Run `npm run lint` and `npm run build` locally.
 - Open the assigned `.vercel.app` URL.
-- Click through the asset list, search, and check-out/check-in flows.
+- Click through the menu, cart, pickup selection, and order tracking flows.
 - Review Vercel **Build Logs** if anything fails.
 - Optional: add a custom domain under **Settings → Domains**.
 
@@ -154,16 +141,18 @@ added in a later phase without changing the GitHub/Vercel pipeline.
 
 ## Deliverables
 
-1. A working Next.js prototype of UniAsset (mock data).
-2. A GitHub repository containing the source code.
-3. A live Vercel deployment URL.
+1. A working Next.js prototype of CampusCafe (mock data).
+2. A portfolio covering project overview, WBS, schedule, Gantt, and roles.
+3. A GitHub repository containing the source code.
+4. A live Vercel deployment URL.
 
 ---
 
 ## Future Enhancements (not in this phase)
 
-- Real database with persistent check-out/check-in records.
-- Role-based authentication (admin, asset officer, staff, student).
-- Reports and analytics dashboard.
-- QR code / barcode scanning for assets.
-- Email notifications for overdue items.
+- Real database with persistent orders and accounts.
+- Role-based authentication for students, staff, and cafeteria managers.
+- Cashless payment integration.
+- Staff order board and preparation queue.
+- Sales reports and menu performance analytics.
+- Push or email notifications when an order is ready.

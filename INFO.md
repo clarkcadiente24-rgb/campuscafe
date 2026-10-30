@@ -1,4 +1,4 @@
-# UniAsset — Project Proposal
+# CampusCafe — Project Proposal
 
 **Course:** IS Project Management
 **Project type:** Software prototype (mock data)
@@ -7,18 +7,20 @@
 
 ## Title
 
-**UniAsset: A Web-Based University Asset & Inventory Management System**
+**CampusCafe: A Web-Based Online Pre-Ordering & Pickup System for University
+Cafeterias**
 
 ## Description
 
-UniAsset is a web-based inventory and asset management system for university
-departments to track equipment, supplies, and assigned assets in real time.
-Students and staff can request, check out, and return items, while
-administrators manage stock levels, asset locations, maintenance records, and
-generate reports. Built with Next.js and deployed on Vercel, the system is
-developed following IS project management practices—requirements gathering,
-scope definition, scheduling, and risk management—to deliver a reliable,
-centralized alternative to manual spreadsheets.
+CampusCafe is a web-based ordering platform that lets students and staff
+pre-order meals from the university cafeteria and pick them up at a chosen time
+between classes. Customers browse the menu, customize quantities, select a
+pickup slot, and track their order from preparation to pickup. Cafeteria staff
+get a simple order board for incoming orders and menu availability. Built with
+Next.js and deployed on Vercel, the project is planned and delivered by a solo
+developer using IS project management practices — requirements gathering, scope
+definition, WBS, scheduling, budgeting, and quality management — to replace
+manual queuing with a faster, more predictable cafeteria experience.
 
 ---
 
@@ -26,34 +28,30 @@ centralized alternative to manual spreadsheets.
 
 | Stakeholder | Role / Interest | Influence |
 |---|---|---|
-| University Administration | Approves project, funds it, expects cost savings and accountability for assets | High |
-| Department Heads / Deans | Own department assets; need visibility into equipment and usage | High |
-| IT / Facilities Department | Maintains equipment, integrates the system, manages deployments | High |
-| Asset/Inventory Officers | Day-to-day users who record, assign, and reconcile assets | High |
-| Lecturers / Staff | Request, borrow, and return equipment; need fast, accurate records | Medium |
-| Students | End users who check out or request items; care about availability and ease of use | Medium |
-| Procurement / Finance | Uses inventory data for purchasing decisions and audits | Medium |
-| Auditors / Compliance | Require accurate records and reporting for accountability | Low–Medium |
-| Database / Cloud Vendors | Provide hosting, storage, and uptime; security dependencies | Low (external) |
+| University Administration | Approves the project and expects improved student services and cafeteria efficiency | High |
+| Cafeteria Manager / Staff | Owns menu availability, prepares orders, needs a clear order board | High |
+| Students | Primary users; want fast ordering and pickup that fits class breaks | High |
+| Faculty & Staff | Regular customers; value convenience and reliable pickup times | Medium |
+| IT / Campus Network Office | Supports deployment, network access, and account integration | Medium |
+| Finance Office | Handles cafeteria revenue, cashless payment integration | Medium |
+| Project Adviser | Reviews scope, schedule, and deliverables | Medium |
+| Hosting / Cloud Vendor | Provides uptime, deployment, and security | Low (external) |
 
-**Summary:** The entire university is affected—administration, departments,
-staff, students, and support units—so the system must be intuitive, secure, and
-centralized rather than department-specific.
+**Summary:** The system affects students, faculty, cafeteria staff, and campus
+administration, so it must be fast, intuitive, and reliable during peak lunch
+hours while remaining simple for cafeteria staff to operate.
 
 ---
 
 ## Objectives
 
-1. Replace manual/spreadsheet-based asset tracking with a centralized,
-   web-based system.
-2. Provide real-time visibility of asset location, status, and availability
-   across all university departments.
-3. Enable students and staff to request, check out, and return assets with a
-   clear audit trail.
-4. Reduce asset loss, duplication, and unnecessary procurement through accurate
-   records and reporting.
-5. Deliver a secure, responsive system deployed on Vercel accessible to the
-   whole university.
+1. Reduce cafeteria queue and waiting time by allowing orders to be placed
+   ahead of pickup.
+2. Let customers choose a pickup time that fits their class schedule.
+3. Give customers real-time order status from preparation to pickup.
+4. Show accurate menu availability so sold-out items cannot be ordered.
+5. Deliver a responsive, accessible web app deployed on Vercel and usable on
+   phones, tablets, and desktops.
 
 ---
 
@@ -61,35 +59,37 @@ centralized rather than department-specific.
 
 ### In scope
 
-- User authentication with roles (admin, asset officer, staff, student)
-- Asset registry (equipment, supplies) with categories, locations, and status
-- Check-out / check-in and request workflows
-- Maintenance and assignment history
-- Dashboard and reports (inventory levels, overdue items, usage)
-- Deployment on Vercel with a hosted relational database
+- Menu browsing with search and category filters
+- Cart with item quantities and order summary
+- Pickup time selection and mock checkout
+- Order confirmation and status tracking
+- Cafeteria staff order board and menu availability
+- Responsive dark liquid-glass UI and deployment on Vercel
 
 ### Out of scope
 
-- Procurement/payment processing
-- Full ERP or finance integration
-- IoT / QR–RFID hardware scanning (Phase 2)
-- Native mobile apps (web-responsive only)
+- Real payment gateway integration
+- Loyalty points and promotions
+- Delivery to classrooms
+- Native mobile applications (responsive web only)
+- Multi-campus franchise management
 
 ---
 
 ## Success Criteria
 
-- 100% of pilot department assets recorded in the system
-- Check-out/return completed in under 2 minutes per transaction
-- Accurate, real-time inventory dashboard with zero manual reconciliation for
-  the pilot
-- Role-based access enforced; no unauthorized asset changes
-- System loads key pages in under 3 seconds and passes UAT with stakeholders
+- Order placement completes in under 2 minutes on a phone
+- Pickup time is respected for at least 95% of demo orders
+- Customers can see order status without refreshing
+- Sold-out items cannot be added to the cart
+- Key pages load in under 3 seconds and pass usability testing with students
+  and cafeteria staff
 
 ---
 
 ## Prototype Status
 
-The current build is a working prototype using mock data and browser storage.
-Check-out, check-in, maintenance updates, filtering, and activity logging are
-functional. A live database and authentication are planned for the next phase.
+The current build is a working prototype using mock menu data and browser
+storage. Menu browsing, search and filtering, cart quantities, pickup selection,
+order placement, and status tracking are functional. A real database,
+authentication, and staff dashboard are planned for a later phase.

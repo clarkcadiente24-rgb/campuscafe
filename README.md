@@ -1,21 +1,32 @@
-# UniAsset
+# CampusCafe
 
-A web-based university asset and inventory management system prototype. UniAsset
-helps university departments track equipment, check items in and out, and keep
-a clear record of asset status and location.
+A web-based pre-ordering and pickup system for university cafeterias. Students
+and staff browse the menu, build an order, choose a pickup time, and track it
+from preparation to pickup — skipping the lunch line.
 
-This is an IS Project Management class prototype built with **Next.js** and
-deployed on **Vercel**. It uses **mock data** with browser storage, so no
-database is required to run or demo it.
+This repository is an **IS Project Management portfolio** built with **Next.js**
+and deployed on **Vercel**. It includes the project overview, WBS and Gantt
+schedule, developer profile, and a working ordering prototype that uses mock
+data with browser storage.
 
-## Features
+## Pages
 
-- Dashboard with live asset counts (total, available, checked out, in maintenance)
-- Search by asset name, ID, serial number, or location
-- Filter by category and status
-- Check out, check in, and mark assets as repaired
-- Recent activity log
-- Responsive layout for desktop and mobile
+| Route | Contents |
+|---|---|
+| `/` | Project overview, objectives, scope, budget, resources, quick timeline |
+| `/schedule` | Work breakdown structure, sequencing, durations, Gantt chart |
+| `/team` | Developer profile, role hats, org chart, responsibilities |
+| `/prototype` | Working ordering system (menu, cart, pickup, order tracking) |
+
+## Prototype Features
+
+- Menu browsing with search and category filters
+- Cart with quantity controls and running subtotal
+- Pickup time selection and mock checkout
+- Order tracking with status flow `Preparing → Ready → Picked up`
+- Sold-out indicators on unavailable items
+- Persistent demo state via `localStorage`
+- Responsive dark liquid-glass interface with smooth page transitions
 
 ## Tech Stack
 
@@ -50,19 +61,33 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 ```
 src/
   app/
-    layout.tsx        Root layout and metadata
-    page.tsx          Asset dashboard (client component)
-    globals.css       Tailwind and global styles
+    layout.tsx          Root layout and metadata
+    template.tsx        Page transition wrapper
+    page.tsx            Overview
+    schedule/page.tsx   WBS, sequencing, durations, Gantt
+    team/page.tsx       Developer profile and roles
+    prototype/page.tsx  Ordering system (client component)
+    globals.css         Tailwind, glass theme, animations
+  components/
+    AuroraBackground.tsx
+    GanttChart.tsx
+    LogoMark.tsx
+    SectionHeading.tsx
+    SiteFooter.tsx
+    SiteHeader.tsx
   data/
-    mockAssets.ts     Asset types and sample data
+    project.ts          Project meta, goals, scope, budget, resources
+    schedule.ts         Phases and activities
+    team.ts             Developer profile and role hats
+    mockMenu.ts         Menu items, categories, pickup slots
 ```
 
-## Mock Data
+## Demo Data
 
-Assets live in `src/data/mockAssets.ts`. Demo changes are stored in the
-browser's `localStorage` under `uniasset-assets-v1` and
-`uniasset-activity-v1`. Use the **Reset demo** button in the header to restore
-the original mock data.
+Menu items live in `src/data/mockMenu.ts`. Prototype changes are stored in the
+browser under `campuscafe-cart-v1`, `campuscafe-orders-v1`, and
+`campuscafe-pickup-v1`. Use the **Reset demo** button on the prototype page to
+clear the stored cart and orders.
 
 Because Vercel runs stateless serverless functions, browser storage is used for
 the prototype. A real database (e.g., Vercel Postgres/Neon or Supabase) can be
