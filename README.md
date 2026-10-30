@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# UniAsset
+
+A web-based university asset and inventory management system prototype. UniAsset
+helps university departments track equipment, check items in and out, and keep
+a clear record of asset status and location.
+
+This is an IS Project Management class prototype built with **Next.js** and
+deployed on **Vercel**. It uses **mock data** with browser storage, so no
+database is required to run or demo it.
+
+## Features
+
+- Dashboard with live asset counts (total, available, checked out, in maintenance)
+- Search by asset name, ID, serial number, or location
+- Filter by category and status
+- Check out, check in, and mark assets as repaired
+- Recent activity log
+- Responsive layout for desktop and mobile
+
+## Tech Stack
+
+- [Next.js 16](https://nextjs.org) (App Router, Turbopack)
+- React 19 + TypeScript
+- Tailwind CSS v4
+- Browser `localStorage` for demo persistence
+- Vercel for deployment
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies and run the development server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command | Description |
+|---|---|
+| `npm run dev` | Start the development server |
+| `npm run build` | Create a production build |
+| `npm run start` | Run the production build locally |
+| `npm run lint` | Run ESLint |
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+  app/
+    layout.tsx        Root layout and metadata
+    page.tsx          Asset dashboard (client component)
+    globals.css       Tailwind and global styles
+  data/
+    mockAssets.ts     Asset types and sample data
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Mock Data
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Assets live in `src/data/mockAssets.ts`. Demo changes are stored in the
+browser's `localStorage` under `uniasset-assets-v1` and
+`uniasset-activity-v1`. Use the **Reset demo** button in the header to restore
+the original mock data.
 
-## Deploy on Vercel
+Because Vercel runs stateless serverless functions, browser storage is used for
+the prototype. A real database (e.g., Vercel Postgres/Neon or Supabase) can be
+added later without changing the deployment pipeline.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Push this repository to GitHub.
+2. Import the repository at [vercel.com/new](https://vercel.com/new).
+3. Keep the detected Next.js settings and click **Deploy**.
+
+No environment variables are required for the mock-data prototype.
+
+## Documentation
+
+- [PLAN.md](PLAN.md) — setup and deployment plan
+- [INFO.md](INFO.md) — project proposal (title, stakeholders, scope, objectives)
